@@ -1,6 +1,10 @@
 doctrine:
     dbal:
         url: '%env(resolve:DATABASE_URL)%'
+        types:
+            rule_good_discount_type: App\DBAL\RuleGoodDiscountType
+            rule_checkout_transaction_discount_type: App\DBAL\RuleCheckoutTransactionDiscountType
+            rule_type: App\DBAL\RuleType
     orm:
         auto_generate_proxy_classes: true
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
