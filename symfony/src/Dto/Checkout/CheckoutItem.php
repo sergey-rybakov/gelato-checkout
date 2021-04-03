@@ -84,4 +84,4 @@ class CheckoutItem
 
         return $this;
     }
-    
+}
