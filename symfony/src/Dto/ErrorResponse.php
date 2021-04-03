@@ -7,7 +7,7 @@ namespace App\Dto;
 use App\Dto\ErrorMessage;
 use Countable;
 
-final class ErrorResponse implements Countable
+class ErrorResponse
 {
     /**
      * @var ErrorMessage[]

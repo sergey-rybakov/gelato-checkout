@@ -13,68 +13,62 @@ use OpenApi\Annotations as OA;
 class CheckoutItem
 {
     /**
-     * @OA\Property(description="List of checked out goods", default=null)
+     * @OA\Property(description="Good", default=null)
      * @OA\Items(type="<App\Entity\Good>")
      */
 
-    protected ?array $goods = null;
+    protected ?Good $good = null;
     /**
-     * @OA\Property(description="List of Promo rules applied" default=null)
-     * * @OA\Items(type="<App\Entity\Rule>")
+     * @OA\Property(description="Rule" default=null)
      */
 
-    protected ?array $rules = null;
+    protected ?Rule $rule = null;
 
       /**
-     * @OA\Property(description="Checkout session summary" default=null)
+     * @OA\Property(description="CheckoutItem summary" default=null)
      */
 
     protected ?CheckoutSummary $summary = null;
 
     /**
-     * @OA\Property(description="Errors" default=null)
-     */
-    protected ?ErrorResponse $errors = null;
-
-    /**
-     * Get the value of goods
+     * Get the value of Good
      */ 
 
-    public function getGoods(): array
+    public function getGood(): ?Good
     {
-        return $this->goods;
+        return $this->good;
     }
 
     /**
-     * Set the value of goods
+     * Set the value of Good
      */ 
-    public function setGoods($goods): self
+    public function setGood(Good $good): self
     {
-        $this->goods = $goods;
+        $this->goods = $good;
 
         return $this;
     }
 
     /**
-     * Get the value of Rules
+     * Get the value of Rule
      */ 
-    public function getRules(): ?array
+    public function getRule(): ?Rule
     {
-        return $this->rules;
+        return $this->rule;
     }
 
     /**
-     * Set the value of Rules
+     * Set the value of Rule
      */ 
-    public function setRules($rules): self
+    public function setRules(Rule $rule): self
     {
-        $this->rules = $rules;
+        $this->rule = $rule;
 
         return $this;
     }
 
     /**
-     * Get the value of summary
+     * Get the value of Summary
      */ 
     public function getSummary(): ?CheckoutSummary
     {
@@ -84,28 +78,10 @@ class CheckoutItem
     /**
      * Set the value of summary
      */ 
-    public function setSummary($summary): self
+    public function setSummary(CheckoutSummary $summary): self
     {
         $this->summary = $summary;
 
         return $this;
     }
-
-    /**
-     * Get the value of errors
-     */ 
-    public function getErrors(): ?ErrorResponse
-    {
-        return $this->errors;
-    }
-
-    /**
-     * Set the value of errors
-     */ 
-    public function setErrors($errors): self
-    {
-        $this->errors = $errors;
-
-        return $this;
-    }
-}
+    
