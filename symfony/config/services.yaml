@@ -18,7 +18,29 @@ services:
     App\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments'] 
-        
+
+    app.encoder.json:
+        class: 'Symfony\Component\Serializer\Encoder\JsonEncoder'
+
     get_set_method_normalizer:
         class: Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer
         tags: [serializer.normalizer]
+
+    app.normalizer.CheckoutResponse:
+        class: 'App\Normalizer\CheckoutResponseNormalizer'
+
+    app.normalizer.CheckoutItem:
+        class: 'App\Normalizer\CheckoutItemNormalizer'
+
+    app.normalizer.ErrorResponse:
+        class: 'App\Normalizer\ErrorResponseNormalizer'
+
+    app.serializer.default:
+        class: 'Symfony\Component\Serializer\Serializer'
+        arguments:
+            0:
+                - '@app.normalizer.CheckoutResponse'
+                - '@app.normalizer.CheckoutItem'
+                - '@app.normalizer.ErrorResponse'
+            1:
+                - '@app.encoder.json'

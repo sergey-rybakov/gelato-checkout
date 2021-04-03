@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\RuleCheckoutTransaction;
+use App\Entity\RuleSession;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method RuleCheckoutTransaction|null find($id, $lockMode = null, $lockVersion = null)
- * @method RuleCheckoutTransaction|null findOneBy(array $criteria, array $orderBy = null)
- * @method RuleCheckoutTransaction[]    findAll()
- * @method RuleCheckoutTransaction[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method RuleSession|null find($id, $lockMode = null, $lockVersion = null)
+ * @method RuleSession|null findOneBy(array $criteria, array $orderBy = null)
+ * @method RuleSession[]    findAll()
+ * @method RuleSession[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class RuleCheckoutTransactionRepository extends ServiceEntityRepository
+class RuleSessionRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, RuleCheckoutTransaction::class);
+        parent::__construct($registry, RuleSession::class);
     }
 
     // /**
-    //  * @return RuleCheckoutTransaction[] Returns an array of RuleCheckoutTransaction objects
+    //  * @return RuleSession[] Returns an array of RuleSession objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class RuleCheckoutTransactionRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?RuleCheckoutTransaction
+    public function findOneBySomeField($value): ?RuleSession
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.exampleField = :val')

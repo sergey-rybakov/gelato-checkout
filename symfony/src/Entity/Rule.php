@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Repository\RuleRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use OpenApi\Annotations as OA;
 
@@ -39,6 +41,21 @@ class Rule
      * @ORM\Column(type="smallint")
      */
     private $enable;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Good::class, inversedBy="Rule")
+     */
+    private $Good;
+
+    /**
+     * @ORM\Column(type="rule_type")
+     */
+    private $discountType;
+
+    public function __construct()
+    {
+        $this->Good = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -89,6 +106,42 @@ class Rule
     public function setEnable(int $enable): self
     {
         $this->enable = $enable;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Good[]
+     */
+    public function getGood(): Collection
+    {
+        return $this->Good;
+    }
+
+    public function addGood(Good $good): self
+    {
+        if (!$this->Good->contains($good)) {
+            $this->Good[] = $good;
+        }
+
+        return $this;
+    }
+
+    public function removeGood(Good $good): self
+    {
+        $this->Good->removeElement($good);
+
+        return $this;
+    }
+
+    public function getDiscountType()
+    {
+        return $this->discountType;
+    }
+
+    public function setDiscountType($discountType): self
+    {
+        $this->discountType = $discountType;
 
         return $this;
     }

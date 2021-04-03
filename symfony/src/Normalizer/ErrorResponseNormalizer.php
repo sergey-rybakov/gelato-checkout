@@ -2,16 +2,15 @@
 
 namespace App\Normalizer;
 
-use App\DTO\Checkout\CheckoutItem;
-use App\DTO\Checkout\CheckoutSummary;
-use App\Entity\Rule;
+use App\DTO\ErrorMessage;
+use App\DTO\ErrorResponse;
 use Symfony\Component\Serializer\Normalizer\ContextAwareNormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 /**
- * CheckoutItemNormalizer normalizer
+ * CheckoutResponse normalizer
  */
-class CheckoutItemNormalizer implements ContextAwareNormalizerInterface
+class ErrorResponseNormalizer implements ContextAwareNormalizerInterface
 {
     private $normalizer;
 
@@ -23,14 +22,17 @@ class CheckoutItemNormalizer implements ContextAwareNormalizerInterface
     public function normalize($object, $format = null, array $context = array())
     {
         return [
-            'item' => $this->normalizer->normalize($object->getItem(), $format, $context),
-            'rule' => $this->normalizer->normalize($object->getRule(), $format, $context),
-            'summary' => $this->normalizer->normalize($object->getSummary(), $format, $context),
+            'list' => array_map(
+                function ($object) use ($format, $context) {
+                    return $this->normalizer->normalize($object, $format, $context);
+                },
+                $object->getErrors()
+            ),
+            'count' => (int) $object->count()
         ];
     }
-
     public function supportsNormalization($data, $format = null, $context = Array())
     {
-        return $data instanceof CheckoutItem;
+        return $data instanceof ErrorResponse;
     }
 }

@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\RuleGoodSubset;
+use App\Entity\RuleGood;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method RuleGoodSubset|null find($id, $lockMode = null, $lockVersion = null)
- * @method RuleGoodSubset|null findOneBy(array $criteria, array $orderBy = null)
- * @method RuleGoodSubset[]    findAll()
- * @method RuleGoodSubset[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method RuleGood|null find($id, $lockMode = null, $lockVersion = null)
+ * @method RuleGood|null findOneBy(array $criteria, array $orderBy = null)
+ * @method RuleGood[]    findAll()
+ * @method RuleGood[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class RuleGoodSubsetRepository extends ServiceEntityRepository
+class RuleGoodRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, RuleGoodSubset::class);
+        parent::__construct($registry, RuleGood::class);
     }
 
     // /**
-    //  * @return RuleGoodSubset[] Returns an array of RuleGoodSubset objects
+    //  * @return RuleGood[] Returns an array of RuleGood objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class RuleGoodSubsetRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?RuleGoodSubset
+    public function findOneBySomeField($value): ?RuleGood
     {
         return $this->createQueryBuilder('g')
             ->andWhere('g.exampleField = :val')

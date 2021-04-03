@@ -6,7 +6,7 @@ namespace App\Dto;
 
 class ErrorMessage
 {
-    private ?string $message;
+    private ?string $message = null;
 
     /**
      * Get the value of message

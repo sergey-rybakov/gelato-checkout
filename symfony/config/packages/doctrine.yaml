@@ -3,7 +3,7 @@ doctrine:
         url: '%env(resolve:DATABASE_URL)%'
         types:
             rule_good_discount_type: App\DBAL\RuleGoodDiscountType
-            rule_checkout_transaction_discount_type: App\DBAL\RuleCheckoutTransactionDiscountType
+            rule_session_discount_type: App\DBAL\RuleSessionDiscountType
             rule_type: App\DBAL\RuleType
     orm:
         auto_generate_proxy_classes: true

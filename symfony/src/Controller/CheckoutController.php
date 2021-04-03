@@ -43,9 +43,10 @@ class CheckoutController
         if(false === ($sku = $request->query->get('sku', false))){
             
             $errorResponse
-                ->pushError(new ErrorMessage('GET sku parameter is mandatory'));
+                ->pushError((new ErrorMessage())
+                    ->setMessage('GET sku parameter is mandatory'));
         }
-
+       
         $logger->info('Incoming checkout request: SKU='.$sku);
 
         // step 1 - find enabled good using passed GET parameter SKU
@@ -55,7 +56,7 @@ class CheckoutController
             $response
                 ->setErrors($errorResponse);
         }
-
-        return new Response($serializer->serialize($errorResponse, 'json'));       
+        
+        return new Response($serializer->serialize($response, 'json'));
     }
 }
