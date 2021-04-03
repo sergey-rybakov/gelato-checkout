@@ -78,8 +78,26 @@
     "doctrine/sql-formatter": {
         "version": "1.1.0"
     },
+    "friendsofphp/proxy-manager-lts": {
+        "version": "v1.0.3"
+    },
+    "laminas/laminas-code": {
+        "version": "4.1.0"
+    },
+    "laminas/laminas-eventmanager": {
+        "version": "3.3.1"
+    },
     "laminas/laminas-zendframework-bridge": {
         "version": "1.0.4"
+    },
+    "nelmio/api-doc-bundle": {
+        "version": "3.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "c8e0c38e1a280ab9e37587a8fa32b251d5bc1c94"
+        }
     },
     "nikic/php-parser": {
         "version": "v4.3.0"
@@ -89,6 +107,15 @@
     },
     "php": {
         "version": "7.4"
+    },
+    "phpdocumentor/reflection-common": {
+        "version": "2.2.0"
+    },
+    "phpdocumentor/reflection-docblock": {
+        "version": "5.2.2"
+    },
+    "phpdocumentor/type-resolver": {
+        "version": "1.4.0"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -114,6 +141,21 @@
             "config/packages/sensio_framework_extra.yaml"
         ]
     },
+    "symfony/apache-pack": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "71599f5b0fdeeeec0fb90e9b17c85e6f5e1350c1"
+        },
+        "files": [
+            "public/.htaccess"
+        ]
+    },
+    "symfony/asset": {
+        "version": "v5.0.11"
+    },
     "symfony/cache": {
         "version": "v5.0.1"
     },
@@ -138,6 +180,9 @@
     },
     "symfony/dependency-injection": {
         "version": "v5.0.1"
+    },
+    "symfony/deprecation-contracts": {
+        "version": "v2.2.0"
     },
     "symfony/doctrine-bridge": {
         "version": "v5.0.1"
@@ -214,8 +259,26 @@
     "symfony/mime": {
         "version": "v5.0.1"
     },
+    "symfony/options-resolver": {
+        "version": "v5.0.11"
+    },
     "symfony/orm-pack": {
         "version": "v1.0.7"
+    },
+    "symfony/phpunit-bridge": {
+        "version": "5.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "5.1",
+            "ref": "bf16921ef8309a81d9f046e9b6369c46bcbd031f"
+        },
+        "files": [
+            ".env.test",
+            "bin/phpunit",
+            "phpunit.xml.dist",
+            "tests/bootstrap.php"
+        ]
     },
     "symfony/polyfill-intl-idn": {
         "version": "v1.13.1"
@@ -232,6 +295,12 @@
     "symfony/polyfill-php80": {
         "version": "v1.18.0"
     },
+    "symfony/property-access": {
+        "version": "v5.0.11"
+    },
+    "symfony/property-info": {
+        "version": "v5.0.11"
+    },
     "symfony/routing": {
         "version": "4.2",
         "recipe": {
@@ -246,11 +315,37 @@
             "config/routes.yaml"
         ]
     },
+    "symfony/serializer": {
+        "version": "v5.0.11"
+    },
+    "symfony/serializer-pack": {
+        "version": "v1.0.4"
+    },
     "symfony/service-contracts": {
         "version": "v2.0.1"
     },
     "symfony/stopwatch": {
         "version": "v5.0.1"
+    },
+    "symfony/translation-contracts": {
+        "version": "v2.3.0"
+    },
+    "symfony/twig-bridge": {
+        "version": "v5.0.11"
+    },
+    "symfony/twig-bundle": {
+        "version": "5.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "5.0",
+            "ref": "fab9149bbaa4d5eca054ed93f9e1b66cc500895d"
+        },
+        "files": [
+            "config/packages/test/twig.yaml",
+            "config/packages/twig.yaml",
+            "templates/base.html.twig"
+        ]
     },
     "symfony/var-dumper": {
         "version": "v5.0.1"
@@ -261,10 +356,19 @@
     "symfony/yaml": {
         "version": "v5.0.1"
     },
+    "twig/twig": {
+        "version": "v3.3.0"
+    },
+    "webmozart/assert": {
+        "version": "1.10.0"
+    },
     "zendframework/zend-code": {
         "version": "3.4.0"
     },
     "zendframework/zend-eventmanager": {
         "version": "3.2.1"
+    },
+    "zircote/swagger-php": {
+        "version": "3.1.0"
     }
 }

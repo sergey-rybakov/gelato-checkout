@@ -7,29 +7,55 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpKernel\Exception\NotFoundException;
 use Psr\Log\LoggerInterface;
+use App\Dto\ErrorMessage;
+use App\Dto\ErrorResponse;
+use App\Dto\Checkout\CheckoutResponse;
+use Nelmio\ApiDocBundle\Annotation\Model;
+use OpenApi\Annotations as OA;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
 class CheckoutController
 {
     /**
-     * Checkout method, processes Promo rules and returns actual checkout object 
-     * @Route("/checkout", name="checkout")
+     * @Route("/checkout", methods={"GET"}, name="checkout")
+     * @OA\Parameter(
+     *     name="sku",
+     *     in="query",
+     *     description="The field used to filter Goods",
+     *     allowEmptyValue="false",
+     *     schema="string"
+     * )
+     * @OA\Response(
+     *     response="200",
+     *     description="Checkout method",
+     *     @OA\Schema(ref=@Model(type=CheckoutResponse::class))
+     * )
+     * @OA\Tag(name="Checkout")
+     * @return Resp
      */
-    public function checkout(Request $request, LoggerInterface $logger): Response
+    public function checkout( Request $request, LoggerInterface $logger, SerializerInterface $serializer, ObjectNormalizer $objectNormalizer)
     {
-        if(false === ($sku = $request->query->get('sku'))){
-            throw $this->createNotFoundException('Query parameter sku is mandatory');
+        $response = new CheckoutResponse();
+        $errorResponse = new ErrorResponse();
+
+        if(false === ($sku = $request->query->get('sku', false))){
+            
+            $errorResponse
+                ->pushError(new ErrorMessage('GET sku parameter is mandatory'));
         }
-        
+
         $logger->info('Incoming checkout request: SKU='.$sku);
 
-        // step 1 - try to find enabled good with passed in GET parameter SKU
-        // step 2 - run a rules processing method from the promoProcessor service
-        // step 3 - build and return the response 
+        // step 1 - find enabled good using passed GET parameter SKU
+        // step 2 - Run rules processing method from the promoProcessor service
+        // step 3 - Build and return the CheckoutResponse
+        if(null !== ($errorResponse->getErrors())){
+            $response
+                ->setErrors($errorResponse);
+        }
 
-        return $this->json([
-            'checkout' => ['Here should be an object with actual checkout data'], //TODO wrap with serializer and create DTO
-        ]);
+        return new Response($serializer->serialize($errorResponse, 'json'));       
     }
 }

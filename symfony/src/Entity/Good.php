@@ -1,14 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
-use App\Repository\GoodsRepository;
+use App\Repository\GoodRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=GoodsRepository::class)
+ * @ORM\Entity(repositoryClass=GoodRepository::class)
  */
-class Goods
+class Good
 {
     /**
      * @ORM\Id()
@@ -18,12 +20,12 @@ class Goods
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=64)
      */
     private $sku;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="float")
      */
     private $price;
 
@@ -44,7 +46,7 @@ class Goods
         return $this;
     }
 
-    public function getPrice(): ?int
+    public function getPrice(): ?float
     {
         return $this->price;
     }

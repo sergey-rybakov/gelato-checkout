@@ -1,0 +1,5 @@
+{
+    "symfony-vscode.consolePath": "bin/console",
+    "symfony-vscode.shellExecutable": "docker exec gelato-checkout_php_1  bash -c \"cd symfony && $@\"",
+    "symfony-vscode.phpExecutablePath": "C:\\php_7_4\\php.exe"
+}

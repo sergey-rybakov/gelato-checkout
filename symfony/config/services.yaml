@@ -18,3 +18,7 @@ services:
     App\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments'] 
+        
+    get_set_method_normalizer:
+        class: Symfony\Component\Serializer\Normalizer\GetSetMethodNormalizer
+        tags: [serializer.normalizer]

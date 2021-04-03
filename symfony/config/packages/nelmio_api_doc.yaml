@@ -1,0 +1,11 @@
+nelmio_api_doc:
+    areas:
+        with_annotation: true
+        path_patterns:
+            - ^/api(?!/doc$)
+        documentation:
+            info:
+                title: Checkout
+                description: Service for Goods checkout and applying discount rules
+                version: '0.7'
+            openapi: "3.0.1"
