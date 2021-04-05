@@ -32,13 +32,13 @@ class Good
     private $price;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Rule::class, mappedBy="Good")
+     * @ORM\ManyToMany(targetEntity=Rule::class)
      */
-    private $Rule;
+    private $rules;
 
     public function __construct()
     {
-        $this->Rule = new ArrayCollection();
+        $this->rules = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -73,16 +73,15 @@ class Good
     /**
      * @return Collection|Rule[]
      */
-    public function getRule(): Collection
+    public function getRules(): Collection
     {
-        return $this->Rule;
+        return $this->rules;
     }
 
     public function addRule(Rule $rule): self
     {
-        if (!$this->Rule->contains($rule)) {
-            $this->Rule[] = $rule;
-            $rule->addGood($this);
+        if (!$this->rules->contains($rule)) {
+            $this->rules[] = $rule;
         }
 
         return $this;
@@ -90,8 +89,8 @@ class Good
 
     public function removeRule(Rule $rule): self
     {
-        if ($this->Rule->removeElement($rule)) {
-            $rule->removeGood($this);
+        if ($this->rules->removeElement($rule)) {
+          //  $rule->removeGood($this);
         }
 
         return $this;

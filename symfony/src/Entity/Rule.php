@@ -12,8 +12,14 @@ use OpenApi\Annotations as OA;
 
 /**
  * @ORM\Entity(repositoryClass=RuleRepository::class)
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="rule_type", type="string")
+ * @ORM\DiscriminatorMap({
+ * "good": "RuleGood",
+ * "session": "RuleSession",
+ * })
  */
-class Rule
+abstract class Rule
 {
     /**
      * @ORM\Id
@@ -43,19 +49,9 @@ class Rule
     private $enable;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Good::class, inversedBy="Rule")
-     */
-    private $Good;
-
-    /**
      * @ORM\Column(type="rule_type")
      */
     private $discountType;
-
-    public function __construct()
-    {
-        $this->Good = new ArrayCollection();
-    }
 
     public function getId(): ?int
     {
@@ -106,30 +102,6 @@ class Rule
     public function setEnable(int $enable): self
     {
         $this->enable = $enable;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Good[]
-     */
-    public function getGood(): Collection
-    {
-        return $this->Good;
-    }
-
-    public function addGood(Good $good): self
-    {
-        if (!$this->Good->contains($good)) {
-            $this->Good[] = $good;
-        }
-
-        return $this;
-    }
-
-    public function removeGood(Good $good): self
-    {
-        $this->Good->removeElement($good);
 
         return $this;
     }
