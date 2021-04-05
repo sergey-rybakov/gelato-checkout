@@ -31,6 +31,7 @@ class ErrorResponseNormalizer implements ContextAwareNormalizerInterface
             'count' => (int) $object->count()
         ];
     }
+    
     public function supportsNormalization($data, $format = null, $context = Array())
     {
         return $data instanceof ErrorResponse;

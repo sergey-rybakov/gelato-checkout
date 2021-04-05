@@ -23,7 +23,6 @@ class CheckoutResponseNormalizer implements ContextAwareNormalizerInterface
 
     public function normalize($object, $format = null, array $context = array())
     {
-        var_dump('XXXXXXX');
         if(null !== $object->getErrors()){
             return [
                 'errors' => array_map(
@@ -48,7 +47,6 @@ class CheckoutResponseNormalizer implements ContextAwareNormalizerInterface
                     $object->getRules()
                 ),
                 'summary' => $this->normalizer->normalize($object->getSummary(), $format, $context),
-
                 'totalPrice' => $object
                                     ->getSummary()
                                     ->getTotalGoodsPriceSum(),
